@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #222;
+      color: white;
+    }
+    h1 {
+      margin-top: 30px;
+    }
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: none;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 22px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>🎮 Rock Paper Scissors</h1>
+
+<button onclick="play('rock')">🪨 Rock</button>
+<button onclick="play('paper')">📄 Paper</button>
+<button onclick="play('scissors')">✂️ Scissors</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function play(userChoice) {
+    const options = ["rock", "paper", "scissors"];
+    const computer = options[Math.floor(Math.random() * 3)];
+
+    let result = "";
+
+    if (userChoice === computer) {
+        result = "It's a Draw!";
+    } else if (
+        (userChoice === "rock" && computer === "scissors") ||
+        (userChoice === "paper" && computer === "rock") ||
+        (userChoice === "scissors" && computer === "paper")
+    ) {
+        result = "You Win! 🎉";
+    } else {
+        result = "You Lose! 😢";
+    }
+
+    document.getElementById("result").innerHTML =
+        `You chose <b>${userChoice}</b><br>
+         Computer chose <b>${computer}</b><br><br>
+         <b>${result}</b>`;
+}
+</script>
+
+</body>
+</html>
